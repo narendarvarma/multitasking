@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Assistant Button</title>
+</head>
+<body>
+    <h1>Test Assistant Button</h1>
+    
+    <input type="text" id="testInput" placeholder="Type a message here">
+    <button onclick="testSend()" id="testBtn">Send Test Message</button>
+    
+    <div id="output"></div>
+    
+    <script>
+        function testSend() {
+            console.log('Test button clicked!');
+            const input = document.getElementById('testInput');
+            const output = document.getElementById('output');
+            const message = input.value.trim();
+            
+            if (!message) {
+                output.innerHTML = '<p style="color: red;">Please enter a message</p>';
+                return;
+            }
+            
+            output.innerHTML = `<p style="color: green;">Message sent: ${message}</p>`;
+            input.value = '';
+        }
+        
+        // Add event listener
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('testBtn');
+            btn.addEventListener('click', function() {
+                console.log('Event listener triggered');
+                testSend();
+            });
+        });
+    </script>
+</body>
+</html>
